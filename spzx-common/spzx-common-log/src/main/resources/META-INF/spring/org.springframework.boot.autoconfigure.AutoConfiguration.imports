@@ -1,0 +1,2 @@
+com.spzx.common.log.service.AsyncLogService
+com.spzx.common.log.aspect.LogAspect

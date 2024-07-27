@@ -1,0 +1,3 @@
+com.spzx.system.api.factory.RemoteUserFallbackFactory
+com.spzx.system.api.factory.RemoteLogFallbackFactory
+com.spzx.system.api.factory.RemoteFileFallbackFactory

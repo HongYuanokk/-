@@ -1,0 +1,5 @@
+com.spzx.common.security.config.WebMvcConfig
+com.spzx.common.security.service.TokenService
+com.spzx.common.security.aspect.PreAuthorizeAspect
+com.spzx.common.security.aspect.InnerAuthAspect
+com.spzx.common.security.handler.GlobalExceptionHandler
