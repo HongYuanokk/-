@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spzx.product.mapper.ProductSpecMapper">
+
+    <resultMap id="ProductSpecResult" type="ProductSpec" autoMapping="true"></resultMap>
+
+    <select id="selectProductSpectList" resultMap="ProductSpecResult" parameterType="ProductSpec">
+        select
+        ps.id, ps.category_id, ps.spec_name, ps.spec_value, ps.create_time, ps.update_by, ps.update_time, ps.del_flag, ps.del_flag, ps.remark,
+        c.name as categoryName
+        from product_spec ps
+        left join category c on c.id = ps.category_id
+        <where>
+            <if test="categoryId != null "> and ps.category_id = #{categoryId}</if>
+            <if test="specName != null  and specName != ''"> and ps.spec_name like concat('%', #{specName}, '%')</if>
+            and ps.del_flag = 0
+        </where>
+    </select>
+
+</mapper>

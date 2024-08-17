@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spzx.product.mapper.BrandMapper">
+
+    <resultMap id="BrandResult" type="Brand" autoMapping="true">
+
+    </resultMap>
+
+    <sql id="selectBrandVo">
+        select id, name, logo, create_by, create_time, update_by, update_time, del_flag, remark from brand
+    </sql>
+
+    <select id="selectBrandList" parameterType="Brand" resultMap="BrandResult">
+        <include refid="selectBrandVo"></include>
+        <where>
+        <if test="name!=null and name!=''">
+            and name like "%"#{name}"%"
+        </if>
+        and del_flag=0
+        </where>
+    </select>
+
+
+
+    <select id="selectBrandById" parameterType="Long" resultMap="BrandResult">
+        <include refid="selectBrandVo"></include>
+        where id =#{id}
+    </select>
+
+
+    <insert id="insertBrand" parameterType="Brand" useGeneratedKeys="true" keyProperty="id">
+        insert into brand(
+        <if test="id != null and id != 0">id,</if>
+        <if test="name != null and name != ''">name,</if>
+        <if test="logo != null and logo != ''">logo,</if>
+        <if test="remark != null and remark != ''">remark,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="id != null and id != 0">#{id},</if>
+        <if test="name != null and name != ''">#{name},</if>
+        <if test="logo != null and logo != ''">#{logo},</if>
+        <if test="remark != null and remark != ''">#{remark},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateBrand" parameterType="Brand">
+        update brand
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="logo != null and logo != ''">logo = #{logo},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <delete id="deleteBrandById" parameterType="Long">
+        update brand set del_flag = '2' where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+
+</mapper>

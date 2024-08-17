@@ -52,6 +52,12 @@
             <artifactId>spzx-common-security</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.spzx</groupId>
+            <artifactId>spzx-api-user</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>

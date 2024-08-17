@@ -14,6 +14,10 @@
         <module>spzx-job</module>
         <module>spzx-file</module>
         <module>spzx-product</module>
+        <module>spzx-user</module>
+        <module>spzx-order</module>
+        <module>spzx-channel</module>
+        <module>spzx-cart</module>
     </modules>
 
     <artifactId>spzx-modules</artifactId>
@@ -22,5 +26,24 @@
     <description>
         spzx-modules业务模块
     </description>
+    <dependencies>
+        <dependency>
+            <groupId>com.spzx</groupId>
+            <artifactId>spzx-api-product</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.spzx</groupId>
+            <artifactId>spzx-api-user</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.spzx</groupId>
+            <artifactId>spzx-api-cart</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+    </dependencies>
 
 </project>

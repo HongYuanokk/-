@@ -19,7 +19,7 @@ import com.spzx.common.security.auth.AuthUtil;
  */
 @Aspect
 @Component
-public class PreAuthorizeAspect
+public class    PreAuthorizeAspect
 {
     /**
      * 构建

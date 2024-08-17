@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spzx.order.mapper.OrderItemMapper">
+
+    <resultMap type="OrderItem" id="OrderItemResult" autoMapping="true">
+    </resultMap>
+
+    <sql id="selectOrderItemVo">
+        select id, order_id, sku_id, sku_name, thumb_img, sku_price, sku_num, create_time, create_by, update_time, update_by, del_flag, remark from order_item
+    </sql>
+
+    <select id="selectOrderItemList" parameterType="OrderItem" resultMap="OrderItemResult">
+        <include refid="selectOrderItemVo"/>
+        <where>
+            <if test="orderId != null "> and order_id = #{orderId}</if>
+            <if test="skuId != null "> and sku_id = #{skuId}</if>
+            <if test="skuName != null  and skuName != ''"> and sku_name like concat('%', #{skuName}, '%')</if>
+            <if test="thumbImg != null  and thumbImg != ''"> and thumb_img = #{thumbImg}</if>
+            <if test="skuPrice != null "> and sku_price = #{skuPrice}</if>
+            <if test="skuNum != null "> and sku_num = #{skuNum}</if>
+        and del_flag = 0
+        </where>
+    </select>
+
+</mapper>

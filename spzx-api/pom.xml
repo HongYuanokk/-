@@ -10,6 +10,9 @@
 
     <modules>
         <module>spzx-api-system</module>
+        <module>spzx-api-product</module>
+        <module>spzx-api-user</module>
+        <module>spzx-api-cart</module>
     </modules>
 
     <artifactId>spzx-api</artifactId>

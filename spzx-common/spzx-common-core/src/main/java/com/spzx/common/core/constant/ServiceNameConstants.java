@@ -21,4 +21,15 @@ public class ServiceNameConstants
      * 文件服务的serviceid
      */
     public static final String FILE_SERVICE = "spzx-file";
+
+    /**
+     * 商品服务的serviceid
+     */
+    public static final String PRODUCT_SERVICE = "spzx-product";
+
+    /**
+     * 会员用户服务的serviceid
+     */
+    public static final String USER_SERVICE = "spzx-user";
+    public static final String CART_SERVICE = "spzx-cart";
 }

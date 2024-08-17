@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spzx.product.mapper.ProductUnitMapper">
+
+    <resultMap type="ProductUnit" id="ProductUnitResult" autoMapping="true">
+    </resultMap>
+
+
+    <sql id="selectProductUnitVo">
+        select id,
+               name,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               del_flag,
+               del_flag,
+               remark
+        from product_unit
+    </sql>
+
+    <select id="selectProductUnitPage" parameterType="ProductUnit" resultMap="ProductUnitResult">
+    <include refid="selectProductUnitVo"></include>
+        <where>
+            <if test="query.name != null and query.name != ''">
+                and name like concat('%', #{query.name}, '%')
+            </if>
+            and del_flag = 0
+        </where>
+    </select>
+
+</mapper>

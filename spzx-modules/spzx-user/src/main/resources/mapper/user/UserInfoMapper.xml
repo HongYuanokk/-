@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spzx.user.mapper.UserInfoMapper">
+
+    <resultMap type="UserInfo" id="UserInfoResult" autoMapping="true">
+    </resultMap>
+
+    <sql id="selectUserInfoVo">
+        select id, username, password, nick_name, phone, avatar, sex, memo, open_id, union_id, last_login_ip, last_login_time, status, create_time, create_by, update_time, update_by, del_flag, remark from user_info
+    </sql>
+
+    <select id="selectUserInfoList" parameterType="UserInfo" resultMap="UserInfoResult">
+        <include refid="selectUserInfoVo"/>
+        <where>
+            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+            <if test="nickName != null  and nickName != ''"> and nick_name like concat('%', #{nickName}, '%')</if>
+            <if test="phone != null  and phone != ''"> and phone = #{phone}</if>
+            <if test="avatar != null  and avatar != ''"> and avatar = #{avatar}</if>
+            <if test="sex != null "> and sex = #{sex}</if>
+            <if test="memo != null  and memo != ''"> and memo = #{memo}</if>
+            <if test="openId != null  and openId != ''"> and open_id = #{openId}</if>
+            <if test="unionId != null  and unionId != ''"> and union_id = #{unionId}</if>
+            <if test="lastLoginIp != null  and lastLoginIp != ''"> and last_login_ip = #{lastLoginIp}</if>
+            <if test="lastLoginTime != null "> and last_login_time = #{lastLoginTime}</if>
+            <if test="status != null "> and status = #{status}</if>
+        and del_flag = 0
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spzx.product.mapper.CategoryBrandMapper">
+
+    <resultMap type="CategoryBrand" id="CategoryBrandResult" autoMapping="true"></resultMap>
+
+
+    <sql id="selectCategoryBrandVo">
+        select id, brand_id, category_id, create_time, update_by, update_time, del_flag, del_flag, remark from category_brand
+    </sql>
+
+    <select id="selectCategoryBrandList" parameterType="CategoryBrand" resultMap="CategoryBrandResult">
+        select
+        cb.id, cb.brand_id, cb.category_id, cb.create_time, cb.update_time, cb.del_flag,
+        c.name as categoryName,
+        b.name as brandName, b.logo
+        from category_brand cb
+        left join category c on c.id = cb.category_id
+        left join brand b  on b.id = cb.brand_id
+        <where>
+            <if test="brandId != null "> and cb.brand_id = #{brandId}</if>
+            <if test="categoryId != null "> and cb.category_id = #{categoryId}</if>
+            and cb.del_flag = 0 and b.del_flag = 0 and c.del_flag = 0
+        </where>
+    </select>
+
+    <select id="selectBrandListByCategoryId" parameterType="Long" resultType="Brand">
+        select
+            b.id, b.name, b.logo
+        from category_brand cb
+                 left join brand b  on b.id = cb.brand_id
+        where cb.del_flag = 0 and b.del_flag = 0
+    </select>
+
+
+</mapper>

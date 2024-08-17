@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spzx.user.mapper.RegionMapper">
+
+    <resultMap type="Region" id="RegionResult" autoMapping="true">
+    </resultMap>
+
+    <sql id="selectRegionVo">
+        select id, code, parent_code, name, level, create_time, create_by, update_time, update_by, del_flag, remark from region
+    </sql>
+
+    <select id="selectRegionList" parameterType="Region" resultMap="RegionResult">
+        <include refid="selectRegionVo"/>
+        <where>
+            <if test="code != null  and code != ''"> and code = #{code}</if>
+            <if test="parentCode != null  and parentCode != ''"> and parent_code = #{parentCode}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="level != null "> and level = #{level}</if>
+        and del_flag = 0
+        </where>
+    </select>
+
+</mapper>

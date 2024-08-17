@@ -3,6 +3,8 @@ package com.spzx.common.core.web.controller;
 import java.beans.PropertyEditorSupport;
 import java.util.Date;
 import java.util.List;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
@@ -67,6 +69,19 @@ public class BaseController
         rspData.setRows(list);
         rspData.setMsg("查询成功");
         rspData.setTotal(new PageInfo(list).getTotal());
+        return rspData;
+    }
+
+    /**
+     * 响应请求分页数据
+     */
+    protected TableDataInfo getDataTable(IPage<?> iPage)
+    {
+        TableDataInfo rspData = new TableDataInfo();
+        rspData.setCode(HttpStatus.SUCCESS);
+        rspData.setRows(iPage.getRecords());
+        rspData.setMsg("查询成功");
+        rspData.setTotal(iPage.getTotal());
         return rspData;
     }
 

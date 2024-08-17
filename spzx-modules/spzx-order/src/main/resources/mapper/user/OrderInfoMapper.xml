@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spzx.order.mapper.OrderInfoMapper">
+
+    <resultMap type="OrderInfo" id="OrderInfoResult" autoMapping="true">
+    </resultMap>
+
+    <sql id="selectOrderInfoVo">
+        select id, user_id, nick_name, order_no, coupon_id, total_amount, coupon_amount, original_total_amount, feight_fee, order_status, receiver_name, receiver_phone, receiver_tag_name, receiver_province, receiver_city, receiver_district, receiver_address, payment_time, delivery_time, receive_time, cancel_time, cancel_reason, create_time, create_by, update_time, update_by, del_flag, remark from order_info
+    </sql>
+
+    <select id="selectOrderInfoList" parameterType="OrderInfo" resultMap="OrderInfoResult">
+        <include refid="selectOrderInfoVo"/>
+        <where>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="nickName != null  and nickName != ''"> and nick_name like concat('%', #{nickName}, '%')</if>
+            <if test="orderNo != null  and orderNo != ''"> and order_no = #{orderNo}</if>
+            <if test="couponId != null "> and coupon_id = #{couponId}</if>
+            <if test="totalAmount != null "> and total_amount = #{totalAmount}</if>
+            <if test="couponAmount != null "> and coupon_amount = #{couponAmount}</if>
+            <if test="originalTotalAmount != null "> and original_total_amount = #{originalTotalAmount}</if>
+            <if test="feightFee != null "> and feight_fee = #{feightFee}</if>
+            <if test="orderStatus != null "> and order_status = #{orderStatus}</if>
+            <if test="receiverName != null  and receiverName != ''"> and receiver_name like concat('%', #{receiverName}, '%')</if>
+            <if test="receiverPhone != null  and receiverPhone != ''"> and receiver_phone = #{receiverPhone}</if>
+            <if test="receiverTagName != null  and receiverTagName != ''"> and receiver_tag_name like concat('%', #{receiverTagName}, '%')</if>
+            <if test="receiverProvince != null  and receiverProvince != ''"> and receiver_province = #{receiverProvince}</if>
+            <if test="receiverCity != null  and receiverCity != ''"> and receiver_city = #{receiverCity}</if>
+            <if test="receiverDistrict != null  and receiverDistrict != ''"> and receiver_district = #{receiverDistrict}</if>
+            <if test="receiverAddress != null  and receiverAddress != ''"> and receiver_address = #{receiverAddress}</if>
+            <if test="paymentTime != null "> and payment_time = #{paymentTime}</if>
+            <if test="deliveryTime != null "> and delivery_time = #{deliveryTime}</if>
+            <if test="receiveTime != null "> and receive_time = #{receiveTime}</if>
+            <if test="cancelTime != null "> and cancel_time = #{cancelTime}</if>
+            <if test="cancelReason != null  and cancelReason != ''"> and cancel_reason = #{cancelReason}</if>
+        and del_flag = 0
+        </where>
+    </select>
+
+</mapper>

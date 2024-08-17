@@ -1,0 +1,2 @@
+com.spzx.common.rabbit.service.RabbitService
+com.spzx.common.rabbit.config.RabbitInitConfigApplicationListener
