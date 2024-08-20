@@ -1,12 +1,15 @@
-package com.spzx.order.domain;
+package com.spzx.product.api.domain;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.spzx.common.core.annotation.Excel;
+import com.spzx.common.core.web.domain.BaseEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
-import com.spzx.common.core.annotation.Excel;
-import com.spzx.common.core.web.domain.BaseEntity;
+import java.util.List;
 
 /**
  * 订单对象 order_info
@@ -128,5 +131,10 @@ public class OrderInfo extends BaseEntity
     @Excel(name = "取消订单原因")
     @Schema(description = "取消订单原因")
     private String cancelReason;
+
+
+    @TableField(exist = false)
+    private List<OrderItem> orderItemList;
+
 
 }
