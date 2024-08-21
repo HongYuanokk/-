@@ -32,4 +32,8 @@ public class ServiceNameConstants
      */
     public static final String USER_SERVICE = "spzx-user";
     public static final String CART_SERVICE = "spzx-cart";
+    /**
+     * 订单服务的serviceid
+     */
+    public static final String ORDER_SERVICE = "spzx-order";
 }

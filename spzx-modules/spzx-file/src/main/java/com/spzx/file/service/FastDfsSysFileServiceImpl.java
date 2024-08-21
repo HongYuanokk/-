@@ -2,11 +2,11 @@
 //
 //import java.io.InputStream;
 //import com.alibaba.nacos.common.utils.IoUtils;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.beans.com.spzx.product.api.factory.annotation.Autowired;
+//import org.springframework.beans.com.spzx.product.api.factory.annotation.Value;
 //import org.springframework.stereotype.Service;
 //import org.springframework.web.multipart.MultipartFile;
-//import com.github.tobato.fastdfs.domain.fdfs.StorePath;
+//import com.github.tobato.fastdfs.com.spzx.product.api.domain.fdfs.StorePath;
 //import com.github.tobato.fastdfs.service.FastFileStorageClient;
 //import com.spzx.common.core.utils.file.FileTypeUtils;
 //
@@ -21,8 +21,8 @@
 //    /**
 //     * 域名或本机访问地址
 //     */
-//    @Value("${fdfs.domain}")
-//    public String domain;
+//    @Value("${fdfs.com.spzx.product.api.domain}")
+//    public String com.spzx.product.api.domain;
 //
 //    @Autowired
 //    private FastFileStorageClient storageClient;
@@ -41,6 +41,6 @@
 //        StorePath storePath = storageClient.uploadFile(inputStream, file.getSize(),
 //                FileTypeUtils.getExtension(file), null);
 //        IoUtils.closeQuietly(inputStream);
-//        return domain + "/" + storePath.getFullPath();
+//        return com.spzx.product.api.domain + "/" + storePath.getFullPath();
 //    }
 //}

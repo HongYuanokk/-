@@ -1,12 +1,7 @@
 package com.spzx.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.spzx.product.api.domain.ProductSku;
-import com.spzx.product.api.domain.SkuPrice;
-import com.spzx.product.api.domain.SkuQuery;
-import com.spzx.product.api.domain.SkuStockVo;
-import com.spzx.product.api.domain.Product;
-import com.spzx.product.api.domain.ProductDetails;
+import com.spzx.product.api.domain.*;
 
 import java.util.List;
 import java.util.Map;
@@ -43,4 +38,10 @@ public interface IProductService extends IService<Product> {
     Map<String, Long> getSkuSpecValue(Long id);
 
     List<SkuPrice> getSkuPriceList(List<Long> skuList);
+
+    String checkAndLock(String tradeNo, List<SkuLockVo> skuLockVoList);
+
+    void unlock(String orderNo);
+
+    void minus(String orderNo);
 }

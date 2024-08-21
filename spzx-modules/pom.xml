@@ -18,6 +18,7 @@
         <module>spzx-order</module>
         <module>spzx-channel</module>
         <module>spzx-cart</module>
+        <module>spzx-payment</module>
     </modules>
 
     <artifactId>spzx-modules</artifactId>
@@ -42,6 +43,12 @@
         <dependency>
             <groupId>com.spzx</groupId>
             <artifactId>spzx-api-cart</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.spzx</groupId>
+            <artifactId>spzx-api-order</artifactId>
             <version>3.6.3</version>
         </dependency>
     </dependencies>

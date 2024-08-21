@@ -1,31 +1,25 @@
 package com.spzx.order.controller;
 
-import java.util.List;
-import java.util.Arrays;
-
-import com.spzx.common.security.annotation.RequiresLogin;
-import com.spzx.order.domain.OrderForm;
-import com.spzx.order.domain.OrderInfo;
-import com.spzx.order.service.IOrderInfoService;
-import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.spzx.common.log.annotation.Log;
-import com.spzx.common.log.enums.BusinessType;
-import com.spzx.common.security.annotation.RequiresPermissions;
+import com.spzx.common.core.domain.R;
+import com.spzx.common.core.utils.poi.ExcelUtil;
 import com.spzx.common.core.web.controller.BaseController;
 import com.spzx.common.core.web.domain.AjaxResult;
-import com.spzx.common.core.utils.poi.ExcelUtil;
+import com.spzx.common.core.web.page.TableDataInfo;
+import com.spzx.common.log.annotation.Log;
+import com.spzx.common.log.enums.BusinessType;
+import com.spzx.common.security.annotation.InnerAuth;
+import com.spzx.common.security.annotation.RequiresLogin;
+import com.spzx.order.domain.OrderForm;
+import com.spzx.product.api.domain.OrderInfo;
+import com.spzx.order.service.IOrderInfoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import com.spzx.common.core.web.page.TableDataInfo;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 订单Controller
@@ -40,6 +34,24 @@ public class OrderInfoController extends BaseController
 {
     @Autowired
     private IOrderInfoService orderInfoService;
+
+
+    @Operation(summary = "根据订单号获取订单信息")
+    @InnerAuth
+    @GetMapping("getByOrderNo/{orderNo}")
+    public R<OrderInfo> getByOrderNo(@PathVariable String orderNo) {
+        OrderInfo orderInfo = orderInfoService.getByOrderNo(orderNo);
+        return R.ok(orderInfo);
+    }
+
+
+    @Operation(summary = "取消订单")
+    @RequiresLogin
+    @GetMapping("cancelOrder/{orderId}")
+    public AjaxResult cancelOrder(@PathVariable Long orderId) {
+        orderInfoService.cancelOrder(orderId);
+        return success();
+    }
 
     @Operation(summary = "获取订单信息")
     @RequiresLogin

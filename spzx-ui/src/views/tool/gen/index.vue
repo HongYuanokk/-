@@ -179,7 +179,7 @@ const data = reactive({
     open: false,
     title: "代码预览",
     data: {},
-    activeName: "domain.java"
+    activeName: "com.spzx.product.api.domain.java"
   }
 });
 
@@ -249,7 +249,7 @@ function handlePreview(row) {
   previewTable(row.tableId).then(response => {
     preview.value.data = response.data;
     preview.value.open = true;
-    preview.value.activeName = "domain.java";
+    preview.value.activeName = "com.spzx.product.api.domain.java";
   });
 }
 /** 复制代码成功 */

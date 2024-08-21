@@ -1,2 +1,1 @@
 com.spzx.cart.api.factory.RemoteCartServiceFallbackFactory
-com.spzx.user.api.factory.RemoteUserAddressFallbackFactory

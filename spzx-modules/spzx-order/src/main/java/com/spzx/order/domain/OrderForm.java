@@ -1,5 +1,6 @@
 package com.spzx.order.domain;
 
+import com.spzx.product.api.domain.OrderItem;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

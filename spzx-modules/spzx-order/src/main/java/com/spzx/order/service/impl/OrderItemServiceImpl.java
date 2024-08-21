@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.spzx.order.mapper.OrderItemMapper;
-import com.spzx.order.domain.OrderItem;
+import com.spzx.product.api.domain.OrderItem;
 import com.spzx.order.service.IOrderItemService;
 
 /**

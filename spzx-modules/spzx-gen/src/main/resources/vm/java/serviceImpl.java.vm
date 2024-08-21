@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import com.spzx.common.core.utils.StringUtils;
 import org.springframework.transaction.annotation.Transactional;
-import ${packageName}.domain.${subClassName};
+import ${packageName}.com.spzx.product.api.domain.${subClassName};
 #end
 import ${packageName}.mapper.${ClassName}Mapper;
-import ${packageName}.domain.${ClassName};
+import ${packageName}.com.spzx.product.api.domain.${ClassName};
 import ${packageName}.service.I${ClassName}Service;
 
 /**

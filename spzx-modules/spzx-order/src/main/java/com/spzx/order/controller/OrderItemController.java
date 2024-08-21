@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Arrays;
 
 import com.github.pagehelper.PageHelper;
-import com.spzx.order.domain.OrderInfo;
-import com.spzx.order.domain.OrderItem;
+import com.spzx.product.api.domain.OrderInfo;
+import com.spzx.product.api.domain.OrderItem;
 import com.spzx.order.service.IOrderInfoService;
 import com.spzx.order.service.IOrderItemService;
 import jakarta.servlet.http.HttpServletResponse;

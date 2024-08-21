@@ -179,13 +179,13 @@ public class VelocityUtils
         String mybatisPath = MYBATIS_PATH + "/" + moduleName;
         String vuePath = "vue";
 
-        if (template.contains("domain.java.vm"))
+        if (template.contains("com.spzx.product.api.domain.java.vm"))
         {
-            fileName = StringUtils.format("{}/domain/{}.java", javaPath, className);
+            fileName = StringUtils.format("{}/com.spzx.product.api.domain/{}.java", javaPath, className);
         }
-        if (template.contains("sub-domain.java.vm") && StringUtils.equals(GenConstants.TPL_SUB, genTable.getTplCategory()))
+        if (template.contains("sub-com.spzx.product.api.domain.java.vm") && StringUtils.equals(GenConstants.TPL_SUB, genTable.getTplCategory()))
         {
-            fileName = StringUtils.format("{}/domain/{}.java", javaPath, genTable.getSubTable().getClassName());
+            fileName = StringUtils.format("{}/com.spzx.product.api.domain/{}.java", javaPath, genTable.getSubTable().getClassName());
         }
         else if (template.contains("mapper.java.vm"))
         {

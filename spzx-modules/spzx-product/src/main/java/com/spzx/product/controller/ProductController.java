@@ -3,16 +3,12 @@ package com.spzx.product.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.spzx.common.core.domain.R;
+import com.spzx.common.core.exception.ServiceException;
 import com.spzx.common.core.web.controller.BaseController;
 import com.spzx.common.core.web.domain.AjaxResult;
 import com.spzx.common.core.web.page.TableDataInfo;
 import com.spzx.common.security.annotation.InnerAuth;
-import com.spzx.product.api.domain.ProductSku;
-import com.spzx.product.api.domain.SkuPrice;
-import com.spzx.product.api.domain.SkuQuery;
-import com.spzx.product.api.domain.SkuStockVo;
-import com.spzx.product.api.domain.Product;
-import com.spzx.product.api.domain.ProductDetails;
+import com.spzx.product.api.domain.*;
 import com.spzx.product.service.ICategoryBrandService;
 import com.spzx.product.service.IProductService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,6 +32,21 @@ public class ProductController extends BaseController {
 
     @Autowired
     ICategoryBrandService categoryBrandService;
+
+    @InnerAuth
+    @Operation(summary = "检查与锁定库存")
+    @PostMapping("checkAndLock/{orderNo}")
+    public R<String> checkAndLock(@PathVariable String tradeNo, @RequestBody List<SkuLockVo> skuLockVoList) {
+        try {
+            return R.ok(productService.checkAndLock(tradeNo, skuLockVoList));
+        } catch (ServiceException e) {
+            e.printStackTrace();
+            return R.ok(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return R.ok("库存不足");
+        }
+    }
 
 
     @Operation(summary = "批量获取商品sku最新价格信息")

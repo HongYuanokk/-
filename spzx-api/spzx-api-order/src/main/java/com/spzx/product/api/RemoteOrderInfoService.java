@@ -15,4 +15,5 @@ public interface RemoteOrderInfoService {
 
     @GetMapping("/orderInfo/getByOrderNo/{orderNo}")
     public R<OrderInfo> getByOrderNo(@PathVariable("orderNo") String orderNo, @RequestHeader(SecurityConstants.INNER) String source);
+
 }

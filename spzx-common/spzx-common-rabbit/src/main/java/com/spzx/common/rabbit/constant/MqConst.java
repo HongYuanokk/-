@@ -41,4 +41,5 @@ public class MqConst {
     public static final Integer CANCEL_ORDER_DELAY_TIME = 15 * 60;
 
 
+    public static final String EXCHANGE_PRODUCT_PAY = "spzx.product.pay";
 }

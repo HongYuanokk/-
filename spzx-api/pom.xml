@@ -13,6 +13,7 @@
         <module>spzx-api-product</module>
         <module>spzx-api-user</module>
         <module>spzx-api-cart</module>
+        <module>spzx-api-order</module>
     </modules>
 
     <artifactId>spzx-api</artifactId>
